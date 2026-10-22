@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecideX - Your Decision Assistant</title>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to DecideX!</h1>
+    
+
+    <label for="category">What are you confused about?</label>
+
+    <select id="category">
+        <option value="sleep">Sleep and Routine</option>
+        <option value="subject">Subject Selection</option>
+        <option value="career">Career Choices</option>
+        <option value="study">Study and Time Management</option>
+        <option value="life">Everyday Life Decisions</option>
+    </select>
+
+    <br><br>
+
+    <label for="problem">Describe your confusion:</label>
+    <br>
+    <textarea id="problem" placeholder="Write your problem here..."></textarea>
+
+    <br><br>
+   <button type="button" onclick="decide()">Help Me Decide</button>
+
+    <div id="result"></div>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+<script>
+document.getElementById("helpBtn").addEventListener("click", function () {
+    const category = document.getElementById("category").value;
+    const problem = document.getElementById("problem").value.trim();
+    const result = document.getElementById("result");
+
+    result.style.display = "block";
+
+    if (problem.length < 5) {
+        result.textContent = "Please write your problem in more detail.";
+        return;
+    }
+
+    const advice = {
+        sleep: "Keep a regular sleep schedule and plan your daily routine.",
+        subject: "Compare your interests, strengths and subject requirements.",
+        career: "Explore careers that match your interests and skills.",
+        study: "Make a task list and complete the most important task first.",
+        life: "Compare your options, their benefits and drawbacks, then choose your next step."
+    };
+
+    result.textContent = advice[category];
+});
+</script>
